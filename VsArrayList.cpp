@@ -47,15 +47,15 @@ void VsArrayList::clear(){
 	size=0;
 }
 //Elimina una posicion especifica en el arreglo
-Object* VsArrayList::remove(int p){
-	if (p < 0|| p >= getSize())
+Object* VsArrayList::remove(int pos){
+	if (pos < 0|| pos >= getSize())
 	{
 		cerr<<"Posicion invalida"<<endl;
 		return NULL;
 	}
-	Object* temp = array[p];
+	Object* temp = array[pos];
 	//delete array[p];
-	for (int i = p; i <size ; ++i)
+	for (int i = pos; i <size ; ++i)
 	{
 		array[i] = array[i+1];
 	}
@@ -71,7 +71,7 @@ Object* VsArrayList::last()const{
 	return array[size-1];
 }
 //Busca si un elemento esta en el arreglo y si lo esta devuelve su posicion
-int VsArrayList::indexof(Object* e){
+int VsArrayList::indexof(Object* elem){
 	if (isEmpty())
 	{
 		cout<<"No hay nada en la lista";
@@ -79,7 +79,7 @@ int VsArrayList::indexof(Object* e){
 	}
 	for (int i = 0; i < size; ++i)
 	{
-		if (array[i]->equals(e))
+		if (array[i]->equals(elem))
 		{
 			return i;
 		}
@@ -87,18 +87,18 @@ int VsArrayList::indexof(Object* e){
 	return -1;
 }
 //Devuelve el elemento en una posicion del arreglo
-Object* VsArrayList::get(int p)const{
+Object* VsArrayList::get(int pos)const{
 	if (isEmpty())
 	{
 		cout<<"No hay nada en la lista";
 		return NULL;
 	}
-	if (p<0||p>size)
+	if (pos<0||pos>=size)
 	{
 		cerr<<"Posicion invalida";
 		return NULL;
 	}else{
-		return array[p];
+		return array[pos];
 	}
 }
 
@@ -139,8 +139,8 @@ void VsArrayList::resize(){
 	currentcapacity+=delta;
 }
 //Inserta elemnto en posiciones especificas del arreglo
-bool VsArrayList::insert(Object* e,int p){
-	if (p<0||p>getSize())
+bool VsArrayList::insert(Object* elem,int pos){
+	if (pos<0||pos>getSize())
 	{
 		return false;
 	}
@@ -148,11 +148,11 @@ bool VsArrayList::insert(Object* e,int p){
 	{
 		resize();
 	}
-	for (int i = getSize(); i > p; --i)
+	for (int i = getSize(); i > pos; --i)
 	{
 		array[i] = array[i-1];
 	}
-	array[p] = e;
+	array[pos] = elem;
 	size++;
 	return true;
 }

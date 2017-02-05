@@ -63,7 +63,7 @@ int main(int argc, char const *argv[])
 					}
 				}
 				sueldprom = sueldprom/empleados->getSize();
-				cout<<"El Sueldo promedio es: "<<sueldprom;
+				cout<<"El Sueldo promedio es: "<<sueldprom<<endl;
 				break;
 			}
 			case 5:{
@@ -130,6 +130,8 @@ void SueldoMayor(ADTList* empleados){
 		}
 	}
 	// Se evalua el cuales empleados contienen el sueldo buscado y se imprimen
+	cout<<"El Sueldo Mayor es: "<<mayor<<endl;
+	cout<<"Empleados con este sueldo: "<<endl;
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -161,6 +163,8 @@ void SueldoMenor(ADTList* empleados){
 		}
 	}
 	// Se evalua el cuales empleados contienen el sueldo buscado y se imprimen
+	cout<<"El Sueldo Menor es: "<<menor<<endl;
+	cout<<"Empleados con este sueldo: "<<endl;
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){

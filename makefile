@@ -17,4 +17,5 @@ VsArrayList.o:	ADTList.h VsArrayList.h VsArrayList.cpp Object.h
 	g++ -c VsArrayList.cpp
 Employee.o:	Employee.cpp Employee.h Object.h
 	g++ -c Employee.cpp
-
+clean:
+	rm *.o
