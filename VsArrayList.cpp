@@ -47,9 +47,9 @@ void VsArrayList::clear(){
 }
 
 Object* VsArrayList::remove(int p){
-	if (p < 0|| p > getSize())
+	if (p < 0|| p >= getSize())
 	{
-		cerr<<"Posicion invalida";
+		cerr<<"Posicion invalida"<<endl;
 		return NULL;
 	}
 	Object* temp = array[p];

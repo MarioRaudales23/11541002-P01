@@ -8,5 +8,6 @@ class Employee:public Person{
 		Employee(double,string,int);
 		virtual~Employee();
 		virtual string toString()const;
-		bool inflacion(int aumento);	
+		double getSueldo();
+		bool inflacion(double aumento);	
 };
