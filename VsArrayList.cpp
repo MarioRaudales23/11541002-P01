@@ -16,6 +16,7 @@ VsArrayList::VsArrayList(int capacity){
 VsArrayList::VsArrayList(int capacity,int delta){
 	currentcapacity=capacity;
 	array=new Object*[capacity];
+	//Se verifica la memoria
 	if (!array)
 	{
 		cerr<<"Out of Memory"<<endl;
@@ -33,7 +34,7 @@ VsArrayList::~VsArrayList(){
 	}
 	delete array;
 }
-
+//Metodo elimina todo lo que se encuentra en el arreglo
 void VsArrayList::clear(){
 	for (int i = 0; i < getSize(); ++i)
 	{
@@ -45,7 +46,7 @@ void VsArrayList::clear(){
 	}
 	size=0;
 }
-
+//Elimina una posicion especifica en el arreglo
 Object* VsArrayList::remove(int p){
 	if (p < 0|| p >= getSize())
 	{
@@ -61,14 +62,15 @@ Object* VsArrayList::remove(int p){
 	size--;
 	return temp;
 }
-
+//Devuelve el primer elemento del arreglo
 Object* VsArrayList::first()const{
 	return array[0];
 }
+//Deuvuelve el ultimo elemento del arreglo
 Object* VsArrayList::last()const{
 	return array[size-1];
 }
-
+//Busca si un elemento esta en el arreglo y si lo esta devuelve su posicion
 int VsArrayList::indexof(Object* e){
 	if (isEmpty())
 	{
@@ -84,7 +86,7 @@ int VsArrayList::indexof(Object* e){
 	}
 	return -1;
 }
-
+//Devuelve el elemento en una posicion del arreglo
 Object* VsArrayList::get(int p)const{
 	if (isEmpty())
 	{
@@ -119,7 +121,7 @@ bool VsArrayList::isEmpty()const{
 	}
 	return false;
 }
-
+//Modifica el tamano del arreglo a una de mayor tamano
 void VsArrayList::resize(){
 	Object** temp = NULL;
 	temp = new Object*[currentcapacity+delta];
@@ -136,7 +138,7 @@ void VsArrayList::resize(){
 	array = temp;
 	currentcapacity+=delta;
 }
-
+//Inserta elemnto en posiciones especificas del arreglo
 bool VsArrayList::insert(Object* e,int p){
 	if (p<0||p>getSize())
 	{

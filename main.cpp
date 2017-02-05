@@ -17,8 +17,8 @@ int main(int argc, char const *argv[])
 	ADTList* empleados = new VsArrayList(5,5);
 	while(opcion != 8){
 		cout<<"1-Ingresar Empleados\n2-Listar Empleados\n"
-		<<"3-Borrar Empleados\n4-Sueldo Promedio\n5-Sueldo Mayor"
-		<<"\n6-Sueldo Menor\n7-Ajuste de Inflacion\n8-Salir\n....";
+		<<"3-Borrar Empleados\n4-Calcular Sueldo Promedio\n5-Ver Sueldo Mayor"
+		<<"\n6-Ver Sueldo Menor\n7-Dar Incremento por Inflacion\n8-Salir\n....";
 		cin>>opcion;
 		switch(opcion){
 			case 1:{
@@ -54,6 +54,7 @@ int main(int argc, char const *argv[])
 			}
 			case 4:{
 				double sueldprom;
+				//Se suman todos los sueldos para luego obtener el promedio
 				for (int i = 0; i < empleados->getSize(); ++i)
 				{
 					if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -79,6 +80,7 @@ int main(int argc, char const *argv[])
 				cin>>inflacion;
 				cout<<"Empleados antes del aumento"<<endl;
 				listar(empleados);
+				//Se modifica cada sueldo en la lista
 				for (int i = 0; i < empleados->getSize(); ++i)
 				{
 					if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -101,20 +103,22 @@ int main(int argc, char const *argv[])
 	delete empleados;
 	return 0;
 }
-
+/*Metodo listar imprime todos los empleados que estan en la lista*/
 void listar(ADTList* empleados){
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		cout<<i<<" "<<empleados->get(i)->toString()<<endl;
 	}
 }
-
+/*Metodo SueldoMayor busca el sueldo mayor y luego imprime todos los empleados con ese sueldo*/
 void SueldoMayor(ADTList* empleados){
 	double mayor;
+	//Se asigna el primer sueldo para tener un valor de inicio en la busqueda de sueldo menor
 	if (dynamic_cast<Employee*>(empleados->get(0))){
 			Employee* temp = dynamic_cast<Employee*>(empleados->get(0));
 			mayor = temp->getSueldo();
 	}
+	//Se busca el sueldo y se cambia hasta que es el menor
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -125,6 +129,7 @@ void SueldoMayor(ADTList* empleados){
 			}
 		}
 	}
+	// Se evalua el cuales empleados contienen el sueldo buscado y se imprimen
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -136,13 +141,15 @@ void SueldoMayor(ADTList* empleados){
 		}
 	}
 }
-
+/*Metodo SueldoMenor busca el sueldo menor y luego imprime todos los empleados con ese sueldo*/
 void SueldoMenor(ADTList* empleados){
 	double menor;
+	//Se asigna el primer sueldo para tener un valor de inicio en la busqueda de sueldo menor
 	if (dynamic_cast<Employee*>(empleados->get(0))){
 			Employee* temp = dynamic_cast<Employee*>(empleados->get(0));
 			menor = temp->getSueldo();
 	}
+	//Se busca el sueldo y se cambia hasta que es el menor
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){
@@ -153,6 +160,7 @@ void SueldoMenor(ADTList* empleados){
 			}
 		}
 	}
+	// Se evalua el cuales empleados contienen el sueldo buscado y se imprimen
 	for (int i = 0; i < empleados->getSize(); ++i)
 	{
 		if (dynamic_cast<Employee*>(empleados->get(i))){

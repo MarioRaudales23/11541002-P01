@@ -17,11 +17,11 @@ string Employee::toString()const{
 	ss<<Person::toString()<<" Sueldo:"<<sueldo;
 	return ss.str();
 }
-
+//Devuelve el sueldo actual
 double Employee::getSueldo(){
 	return sueldo;
 }
-
+//Asigna un cambia a sueldo por metio de porcentaje
 bool Employee::inflacion(double aumento){
 	double valor = aumento/100;
 	sueldo = sueldo + (sueldo*valor);

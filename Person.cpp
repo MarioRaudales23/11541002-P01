@@ -13,11 +13,11 @@ Person::~Person(){
 
 string Person::toString()const{
 	stringstream ss;
-	ss<<"Name: "<<name
-	<<"Age: "<<age;
+	ss<<"Nombre: "<<name
+	<<"Edad: "<<age;
 	return ss.str();
 }
-
+//Duevuele si una Persona el igual a otra
 bool Person::equals(Object* other)const{
 	if (dynamic_cast<Person*>(other))
 	{
